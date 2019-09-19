@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="@color/white"-->
+    <!--android:gravity="center_vertical"-->
+    <!--app:layout_collapseMode="pin"-->
+    <!--app:layout_scrollFlags="enterAlwaysCollapsed"-->
+    <!--app:theme="@style/MyToolbarTheme"-->
+    <!--app:title="@string/app_name"/>-->
+
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/white">
+
+
+<TextView
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="SG Buses"
+    android:textStyle="bold"
+    android:textSize="@dimen/_16sdp"
+    android:textColor="@color/black"
+    android:layout_gravity="center"
+    android:id="@+id/toolbar_title" />
+
+
+</androidx.appcompat.widget.Toolbar>

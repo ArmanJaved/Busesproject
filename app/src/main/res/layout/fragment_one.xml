@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:sothree="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            sothree:umanoPanelHeight="@dimen/_110sdp"
+            sothree:umanoShadowHeight="1dp"
+            sothree:umanoParallaxOffset="100dp"
+            sothree:umanoDragView="@+id/dragView"
+            sothree:umanoOverlay="true"
+            sothree:umanoScrollableView="@+id/list">
+
+            <!-- MAIN CONTENT -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
+
+            <!-- SLIDING LAYOUT -->
+            <LinearLayout
+                android:background="@drawable/roundlist"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_350sdp"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="false"
+                android:id="@+id/dragView">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_margin="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+
+                            android:src="@drawable/bus_view1"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:text="Bus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/bus_view2"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:text="MRT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/bus_view3"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:text="Lines"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/bus_view4"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:text="LRT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"/>
+
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/follow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="14sp"
+                        android:gravity="center_vertical|right"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"/>
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ExpandableListView
+                        android:background="#FEFEFE"
+                        android:id="@+id/expandableListView"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="0.5dp" />
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "613070877463",
+    "firebase_url": "https://sgbuses-ac2b7.firebaseio.com",
+    "project_id": "sgbuses-ac2b7",
+    "storage_bucket": "sgbuses-ac2b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613070877463:android:99a9895b02a6a3e4",
+        "android_client_info": {
+          "package_name": "com.sgbuses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613070877463-ilt57bnf9u6qal54mp4nkvd3m9kdpmhu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sgbuses",
+            "certificate_hash": "00ada9a258fe0a99606d7dd373c646dc73ad8bb9"
+          }
+        },
+        {
+          "client_id": "613070877463-5o6eqbuo31st6c54osa2jb1g2895vhc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHUiDhGJmpiPbZaMQHhL9inqX5oCFvUlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613070877463-5o6eqbuo31st6c54osa2jb1g2895vhc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

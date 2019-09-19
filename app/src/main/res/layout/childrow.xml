@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    tools:context=".MainActivity"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight=".5"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Açıklama"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:paddingLeft="15dp"
+            android:text="Miktar"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Birim Fiyat"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="5dp"
+            android:text="Tutar"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight=".5">
+        <TextView
+            android:id="@+id/lblDefination"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="default"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/lblQuantity"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="15dp"
+            android:text="default"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/lblUnitPrice"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="default"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/lblDebt"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:paddingLeft="5dp"
+            android:text="default"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
