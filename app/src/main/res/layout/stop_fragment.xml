@@ -17,6 +17,7 @@
         <EditText
             android:background="@drawable/round"
             android:layout_weight="1"
+            android:inputType="text"
             android:id="@+id/stopno"
             android:padding="@dimen/_10sdp"
             android:layout_width="wrap_content"
@@ -60,12 +61,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </ListView>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_marginTop="@dimen/_21sdp"
+            android:id="@+id/swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="@dimen/_21sdp"
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </LinearLayout>

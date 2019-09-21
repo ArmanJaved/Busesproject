@@ -62,8 +62,6 @@ public class FavouriteList {
 
                         String bus = busFirebase.getBus();
                         BUSFAVList.add(bus);
-                        String t1 = busFirebase.getTim1();
-                        String t2 = busFirebase.getTim2();
 
                     }
 

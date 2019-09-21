@@ -176,8 +176,8 @@ public class Tab1Fragment extends Fragment implements
 
                     @Override
                     public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getContext(), " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), " List Collapsed.",
+//                        Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -585,6 +585,6 @@ public class Tab1Fragment extends Fragment implements
 
     @Override
     public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-        return true;
+        return false;
     }
 }

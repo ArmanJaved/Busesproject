@@ -1,6 +1,7 @@
 package com.sgbuses;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.sgbuses.Search_c_listview.AdaptopBusStop;
@@ -78,6 +81,8 @@ public class Tab4Fragment extends Fragment {
 
         dataModels= new ArrayList<>();
         bus_stopno = (EditText)view.findViewById(R.id.stopno);
+
+
         bus_stopno.setText("");
         st_name_des = (TextView) view.findViewById(R.id.stop_no);
         lib = (View)view.findViewById(R.id.lineb);
@@ -125,6 +130,7 @@ public class Tab4Fragment extends Fragment {
                             search_bus_stop_list(text);
 
 
+
                         }
                         else {
 
@@ -147,6 +153,29 @@ public class Tab4Fragment extends Fragment {
 
             }
         });
+
+
+
+
+        ///  For refreshing the list of Bus timing
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swiperefresh);
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        swipeRefreshLayout.setRefreshing(false);
+                        listView_bus_t.setVisibility(View.GONE);
+                        String text = bus_stopno.getText().toString();
+//                        search_bus_stop_list(text);
+                        try {
+                            run(text);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        );
 
         return view;
 
@@ -282,6 +311,8 @@ public class Tab4Fragment extends Fragment {
 
     public void run(String st_no) throws IOException {
 
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         dataModels.clear();
 
@@ -327,6 +358,10 @@ public class Tab4Fragment extends Fragment {
             String est_next_bus_int;
             String est_next_bus2_int;
             String est_next_bus3_int;
+            String bus1load;
+            String bus2load;
+            String bus3load;
+
             // get JSONObject from JSON file
             JSONObject obj = new JSONObject(jsonval);
             // fetch JSONArray named users
@@ -348,22 +383,26 @@ public class Tab4Fragment extends Fragment {
 
                 // fetch mobile number and store it in arraylist
                 est_next_bus_int = nex_bus_obj.getString("EstimatedArrival");
+                bus1load = nex_bus_obj.getString("Load");
                 est_next_bus_int = gettime(est_next_bus_int);
 
 
                 JSONObject nex_bus2_obj = userDetail.getJSONObject("NextBus2");
                 // fetch mobile number and store it in arraylist
                 est_next_bus2_int = nex_bus2_obj.getString("EstimatedArrival");
+                bus2load = nex_bus2_obj.getString("Load");
                 est_next_bus2_int = gettime(est_next_bus2_int);
+
 
 
                 JSONObject nex_bus3_obj = userDetail.getJSONObject("NextBus3");
                 // fetch mobile number and store it in arraylist
                 est_next_bus3_int = nex_bus3_obj.getString("EstimatedArrival");
+                bus3load = nex_bus3_obj.getString("Load");
 
                 est_next_bus3_int = gettime(est_next_bus3_int);
 
-                dataModels.add(new DataModel(serv_no, est_next_bus_int, est_next_bus2_int ,est_next_bus3_int ));
+                dataModels.add(new DataModel(serv_no, est_next_bus_int, est_next_bus2_int ,est_next_bus3_int, bus1load, bus2load, bus3load));
 
 
             }
@@ -376,10 +415,11 @@ public class Tab4Fragment extends Fragment {
 
 
 
-        MyListAdapter adapter = new MyListAdapter(dataModels, Stop_name, Bus_Servic_No, Route_No );
+        MyListAdapter adapter = new MyListAdapter(dataModels, Stop_name, Bus_Servic_No, Route_No , getActivity());
         listView_bus_t.setHasFixedSize(true);
         listView_bus_t.setLayoutManager(new LinearLayoutManager(getContext()));
         listView_bus_t.setAdapter(adapter);
+        listView_bus_t.setVisibility(View.VISIBLE);
 
 
 
