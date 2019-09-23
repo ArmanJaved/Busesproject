@@ -75,7 +75,7 @@ public class Tab1Fragment extends Fragment implements
 
     MapView mMapView;
     private GoogleMap googleMap;
-
+    public static ArrayList<String> REMFAVLIST = new ArrayList<String>();
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
     LocationRequest mLocationRequest;
@@ -182,44 +182,53 @@ public class Tab1Fragment extends Fragment implements
                     }
                 });
 
-                listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-                    @Override
-                    public boolean onChildClick(ExpandableListView parent, View v,int groupPosition, int childPosition, long id) {
-
-                        /* You must make use of the View v, find the view by id and extract the text as below*/
-
-                        TextView tv= (TextView) v.findViewById(R.id.textTitle);
-                        String data= tv.getText().toString();
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                Toast.makeText(getContext(), data, Toast.LENGTH_LONG ).show();
-                            }
-                        });
-
-                        ImageView fav= (ImageView) v.findViewById(R.id.fav);
-                        fav.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                Toast.makeText(getContext(), "f AV", Toast.LENGTH_LONG ).show();
-                                removeFavval(data);
-                                startActivity(new Intent(getContext(), MainActivity.class));
+//                listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 //
-//                                items.remove(groupPosition);
-//                                adapter.notifyDataSetChanged();
-//                                listView.removeViewAt(childPosition);
-                            }
-                        });
-
-
-
-
-                        return true;  // i missed this
-                    }
-                });
+//                    @Override
+//                    public boolean onChildClick(ExpandableListView parent, View v,int groupPosition, int childPosition, long id) {
+//
+//                        /* You must make use of the View v, find the view by id and extract the text as below*/
+//
+//                        TextView tv= (TextView) v.findViewById(R.id.textTitle);
+//                        String data= tv.getText().toString();
+//                        tv.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//
+//                                Toast.makeText(getContext(), data, Toast.LENGTH_LONG ).show();
+//                            }
+//                        });
+//
+//                        ImageView fav= (ImageView) v.findViewById(R.id.fav);
+//                        fav.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//
+//                                Toast.makeText(getContext(), "f AV", Toast.LENGTH_LONG ).show();
+//                                items.get(groupPosition).items.get(childPosition);
+//                                int ss = items.size();
+//
+//                                for (int i =0 ; i < ss ; i++)
+//                                {
+//                                    items.remove(groupPosition);
+//                                }
+//
+//                                removeFavval(data);
+//
+////                                startActivity(new Intent(getContext(), MainActivity.class));
+//////
+////                                items.remove(groupPosition);
+////                                adapter.notifyDataSetChanged();
+////                                listView.removeViewAt(childPosition);
+//                            }
+//                        });
+//
+//
+//
+//
+//                        return true;  // i missed this
+//                    }
+//                });
 
             }
 
@@ -311,21 +320,37 @@ public class Tab1Fragment extends Fragment implements
             holder.t1.setText(item.hint);
             holder.t2.setText(item.t2);
 
-//            holder.fav.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//
-//                    Toast.makeText(getContext(), "Fav", Toast.LENGTH_LONG).show();
-//                }
-//            });
+            holder.fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+
+
+                    String sa_no = items.get(groupPosition).items.get(childPosition).title;
+                    items.get(groupPosition).items.remove(childPosition);
+                    int sd = items.get(groupPosition).items.size();
+                    if (sd ==0 ){
+                        items.remove(groupPosition);
+                    }
+                    adapter.notifyDataSetChanged();
+                    REMFAVLIST.add(sa_no);
+//                    removeFavval(sa_no);
+
+
+                }
+            });
 
             return convertView;
         }
 
         @Override
         public int getRealChildrenCount(int groupPosition) {
+
+
             return items.get(groupPosition).items.size();
+
+
         }
 
         @Override
@@ -524,7 +549,7 @@ public class Tab1Fragment extends Fragment implements
     }
 
 
-    public void removeFavval (String rem_val)
+    public void removeFavval ()
     {
         FirebaseDatabase database;
         DatabaseReference mRef;
@@ -555,10 +580,7 @@ public class Tab1Fragment extends Fragment implements
 
                         String chilkey = child1.getKey();
                         String bus = busFirebase.getBus();
-                        String t1 = busFirebase.getTim1();
-                        String t2 = busFirebase.getTim2();
-
-                        if (rem_val.equals(bus))
+                        if (REMFAVLIST.contains(bus))
                         {
                             mRef.child(ptitle).child(chilkey).removeValue();
                         }
@@ -569,7 +591,6 @@ public class Tab1Fragment extends Fragment implements
 
                 }
 
-                adapter.notifyDataSetChanged();
 
 
             }
@@ -581,6 +602,40 @@ public class Tab1Fragment extends Fragment implements
 
         });
 
+    }
+
+    @Override
+    public void onDetach() {
+//        Toast.makeText(getContext(), "Detached", Toast.LENGTH_LONG).show();
+
+        removeFavval();
+        super.onDetach();
+    }
+
+    @Override
+    public void onDestroyView() {
+        removeFavval();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onPause() {
+        removeFavval();
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        removeFavval();
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        removeFavval();
+
+//        Toast.makeText(getContext(), "Finish", Toast.LENGTH_LONG).show();
+        super.onDestroy();
     }
 
     @Override

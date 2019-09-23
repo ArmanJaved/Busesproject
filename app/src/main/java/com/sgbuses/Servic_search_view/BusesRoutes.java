@@ -69,6 +69,7 @@ public class BusesRoutes extends FragmentActivity implements
         bus_no = (Button)findViewById(R.id.busno);
         orgin = (RadioButton)findViewById(R.id.orign);
         destin = (RadioButton)findViewById(R.id.des) ;
+        orgin.setEnabled(false);
         destin.setEnabled(false);
 
         Button del = (Button)findViewById(R.id.del);
@@ -209,6 +210,7 @@ public class BusesRoutes extends FragmentActivity implements
                 }
 
                 destin.setEnabled(true);
+                orgin.setEnabled(true);
 
                 route1();
 
